@@ -1,28 +1,21 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from blog.models import Blog, Category, Tag
+from blog.models import Post, Tag
 import datetime
+import psycopg2
 
 
 
 def index(request):
     return render_to_response('index.html', {
-        'categories': Category.objects.all(),
-        'posts': Blog.objects.all()[:5]
+        'posts': Post.objects.all()[:5]
     })
 
 
-def view_post(request, slug):
+def view_post(request):
     return render_to_response('view_post.html', {
-        'post': get_object_or_404(Blog, slug=slug)
+        'post': get_object_or_404(Post)
     })
 
-
-def view_category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
-    return render_to_response('view_category.html', {
-        'category': category,
-        'posts': Blog.objects.filter(category=category)[:5]
-    })
 
 
 def homepage(request):

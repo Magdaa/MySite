@@ -1,17 +1,24 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>{% block title %}Magda's BLOG{% endblock %}</title>
 </head>
-<body>
-    <h1>Magda's BLOG</h1>
-    {% block content %}{% endblock %}
 
-    {% block footer %}
-    <hr>
-    <p>Thanks for visiting my site.</p>
-    {% endblock %}
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="{% url 'index' %}">Index</a> </li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}">Blog</a></li>
+            <li><a href="">About Me</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

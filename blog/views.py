@@ -1,25 +1,26 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
+from django.template import RequestContext
+
 from blog.models import Post, Tag
 import datetime
 import psycopg2
 
 
-
 def index(request):
-    return render_to_response('index.html', {
-        'posts': Post.objects.all()[:5]
-    })
+    num_posts = Post.objects.all().count()
+
+    return render(
+        request,
+        'index.html',
+        context={'num_posts': num_posts},
+    )
 
 
 def view_post(request):
-    return render_to_response('view_post.html', {
-        'post': get_object_or_404(Post)
-    })
-
-
-
-def homepage(request):
-    return render(request, 'homepage.html')
+    posts = Post.objects.all().order_by('-posted')
+    return render_to_response('homepage.html',
+                              {'posts': posts})
+    #  context_instance=RequestContext(request))
 
 
 def current_datetime(request):

@@ -6,10 +6,13 @@ from django import forms
 class BlogAdmin(admin.ModelAdmin):
     exclude = ['posted']
 
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'posted', 'category')
 
-#admin.site.register(Post)
+
+
+# admin.site.register(Post)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag)
 admin.site.register(Category)

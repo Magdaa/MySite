@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+<p>You searched for: <strong>{{ query }}</strong></p>
+
+        {% if posts %}
+            <p>Found {{ posts|length }} post{{ posts|pluralize }}</p>
+            <ul>
+                {% for post in posts %}
+                <li>{{ post.title }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No posts matched your search criteria.</p>
+        {% endif %}
+
+{% endblock %}

@@ -9,7 +9,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'posted', 'category')
-
+    prepopulated_fields = {'slug': ('title',)}
 
 
 # admin.site.register(Post)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
+from django.views.generic import ListView, DetailView
 
 from blog.models import Post, Tag, Category
 from blog.forms import ContactForm
@@ -65,3 +66,19 @@ def contact(request):
         form = ContactForm()
     return render(request, 'contact_form.html', {'form':
                                                      form})
+
+
+class PostsList(ListView):
+    model = Post
+    paginate_by = 10
+    context_object_name = 'blog'
+
+
+posts_list = PostsList.as_view()
+
+
+class PostsDetailView(DetailView):
+    model = Post
+
+
+post_detail = PostsDetailView.as_view()

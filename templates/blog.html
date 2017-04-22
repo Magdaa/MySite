@@ -4,8 +4,21 @@
 {% block title %}My amazing blog{% endblock %}
 
 {% block content %}
-{% for entry in posts %}
+{% for entry in blog %}
     <h2>{{ entry.title }}</h2>
-    <p>{{ entry.body }}</p>
+    <p>{{ entry.body|safe }}</p>
+    {{ entry.posted|date:"Y.m.d H:i" }}
 {% endfor %}
 {% endblock %}
+
+{% if is_paginated %}
+    <hr>
+    {% if page_obj.has_next %}
+        <a href="{% url "blog" page_obj.next_page_number %}">older</a>
+    {% endif %}
+    {% if page_obj.has_previous %}
+        <a href="{% url "blog" page_obj.previous_page_number %}">newer</a>
+    {% endif %}
+{% endif %}
+
+<h3><a href="{% url "post-detail" entry.slug %}">{{ entry.title }}</a></h3>

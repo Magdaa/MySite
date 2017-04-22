@@ -31,7 +31,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=500)
-    # slug = models.SlugField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
     body = models.TextField()
     posted = models.DateTimeField()
     tags = models.ManyToManyField(Tag, verbose_name='tags')

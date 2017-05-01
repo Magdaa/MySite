@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/static/styles.css" />
-    <title>{% block title %}Magda's BLOG{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Amatic+SC|Raleway:100,200,300,400,500,600,700,800,900" type="text/css" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}Magda's website{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+
 </head>
 
 <body>
-  <div class="container-fluid">
-
-    <div class="row">
-      <div class="col-sm-2">
+  <div class="navigation">
       {% block sidebar %}
-      <ul class="sidebar-nav">
-            <li><a href="{% url 'index' %}">Index</a> </li>
+      <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'blog' %}">Blog</a></li>
             <li><a href="{% url 'category' %}">Category</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
-            <li><a href="">About Me</a></li>
+            <li id="logo"><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact Me</a></li>
+            <li>Photos</li>
+            <li><a href="{% url 'aboutme' %}">About Me</a></li>
+
       </ul>
      {% endblock %}
       </div>
-      <div class="col-sm-10 ">
+  <div id="cover">
+    <div class="cover-content">
+    </div>
+  </div>
+
       {% block content %}{% endblock %}
-      </div>
+
     </div>
 
   </div>

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Tag(models.Model):
@@ -31,9 +32,10 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=500)
-    slug = models.SlugField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True, verbose_name='slug')
     body = models.TextField()
     posted = models.DateTimeField()
+    #tags=TaggableManager()
     tags = models.ManyToManyField(Tag, verbose_name='tags')
     category = models.ForeignKey(Category, default=1, verbose_name='categories')
 
@@ -42,3 +44,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['posted']
+
+
+
+    def get_absolute_url(self):
+        return reverse('post-detail',
+                       kwargs={'slug': self.slug})
+
+

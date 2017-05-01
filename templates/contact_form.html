@@ -3,13 +3,17 @@
 {% block title %}Contact me{% endblock %}
 
 {% block content %}
-    <h1>Contact me</h1>
+    <h2>Contact me</h2>
+    <div class="contact_table">
        <form action="" method="post">
         <table>
             {{ form.as_table }}
         </table>
         {% csrf_token %}
+           <div id="submit_button">
         <input type="submit" value="Submit">
+           </div>
     </form>
+    </div>
 {% endblock %}
 

@@ -1,24 +1,19 @@
 {% extends "base.html" %}
 
 
-{% block title %}My amazing blog{% endblock %}
-
+{% block title %}Blog{% endblock %}
 {% block content %}
-{% for entry in blog %}
-    <h2>{{ entry.title }}</h2>
-    <p>{{ entry.body|safe }}</p>
-    {{ entry.posted|date:"Y.m.d H:i" }}
+    <h1><a>All my life in one place:</a></h1>
+{% for post in post_list %}
+    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+    <p class="category">Category:: {{ post.category}}</p>
+    <div class="short_post">
+    <p>{{ post.body| truncatewords:50 }}</p>
+    {{ post.posted|date:"Y.m.d H:i" }}
+    </div>
 {% endfor %}
+
+{% include 'snippets/pagination.html' %}
+
 {% endblock %}
 
-{% if is_paginated %}
-    <hr>
-    {% if page_obj.has_next %}
-        <a href="{% url "blog" page_obj.next_page_number %}">older</a>
-    {% endif %}
-    {% if page_obj.has_previous %}
-        <a href="{% url "blog" page_obj.previous_page_number %}">newer</a>
-    {% endif %}
-{% endif %}
-
-<h3><a href="{% url "post-detail" entry.slug %}">{{ entry.title }}</a></h3>

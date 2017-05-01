@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}The current time{% endblock %}
+
 
 {% block content %}
+    <h1><a>Magda's website</a></h1>
     <p>It is now {{ current_date }}.</p>
+    <p>Thank you for visiting my website. Hope you will enjoy my story and my photos!</p>
+    <p>If you'd like to visit my blog, please go <a href="{% url 'blog' %}" target="_blank">HERE</a></p>
 {% endblock %}
+

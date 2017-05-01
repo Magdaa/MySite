@@ -5,10 +5,14 @@ body {
 }
 
 #cover {
-  height: 700px;
+  height: 900px;
   position: relative;
+  top: -55px;
   width: 100%;
     background: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-8/htmlcss1-img_bicycles.jpeg") no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: scroll;
 }
 
 .navigation {
@@ -64,18 +68,17 @@ h1 {
 h2 {
   color: #000;
   font-family: 'Raleway', sans-serif;
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 38px;
+  font-weight: 300;
   text-align: center;
 }
 
 h3 {
-  color: #1c3b6e;
+  color: #14213D;
   font-family: 'Abel', sans-serif;
-  font-size: 34px;
-  text-align: left;
+  font-size: 28px;
+  text-align: center;
   text-transform: uppercase;
-    margin: 20px;
 }
 
 h4 {
@@ -85,7 +88,7 @@ h4 {
   margin: 0px 0px 50px 0px;
 }
 
-p , .contact_table{
+p {
   color: #333;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
@@ -102,24 +105,14 @@ a {
   font-family: 'Amatic SC', cursive;
   font-size: 26px;
   padding: 14px;
+    background-image:-webkit-linear-gradient(#687893,#14213D);
 }
 
-.full_post, .short_post{
-  margin: auto 20px auto 20px;
-    text-align: justify;
-    line-height: 230%;
-
-}
-
-.category{
-    margin: 10px 20px;
-    color: dodgerblue;
-    font-style: italic;
-}
-.contact_table{
-    margin: 10px;
-}
-
-#submit_button{
-    margin-left:280px;
+.products {
+  background: #EEEFF1;
+  box-sizing: border-box;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 0px;
+  text-align: center;
 }

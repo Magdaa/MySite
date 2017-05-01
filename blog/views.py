@@ -1,6 +1,7 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, DetailView
 
 from blog.models import Post, Tag, Category
@@ -19,12 +20,6 @@ def index(request):
     )
 
 
-def view_post(request):
-    posts = Post.objects.all().order_by('-posted')
-    return render_to_response('blog.html',
-                              {'posts': posts})
-
-
 def current_datetime(request):
     now = datetime.datetime.now()
     return render(request, 'current_datetime.html', {'current_date': now})
@@ -34,6 +29,10 @@ def view_category(request):
     categories = Category.objects.all()
     return render_to_response('homepage.html',
                               {'categories': categories})
+
+
+def about_me(request):
+    return render(request, 'about_me.html')
 
 
 def search(request):
@@ -70,15 +69,16 @@ def contact(request):
 
 class PostsList(ListView):
     model = Post
-    paginate_by = 10
-    context_object_name = 'blog'
-
-
-posts_list = PostsList.as_view()
+    template_name = 'blog.html'
+    paginate_by = 5
+    queryset = Post.objects.all().order_by('-posted')
 
 
 class PostsDetailView(DetailView):
     model = Post
+    template_name = 'post_detail.html'
 
 
 post_detail = PostsDetailView.as_view()
+posts_list = PostsList.as_view()
+

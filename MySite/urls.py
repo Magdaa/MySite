@@ -20,15 +20,15 @@ from django.contrib import admin
 from blog.views import *
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^homepage/', current_datetime, name='home'),
-    url(r'^time/', current_datetime),
-    url(r'^(?P<page>[0-9]+)/$', posts_list, name='blog'),
-    url(r'^blog/$', posts_list, name='blog'),
-    url(r'^index/$', index, name='index'),
-    url(r'^blog/category/$', view_category, name='category'),
-    url(r'^search/$', search),
-    url(r'^contact/$', contact, name='contact'),
-    url(r'^blog/(?P<slug>[\w\-_]+)/$', post_detail, name='post-detail'),
+                  url(r'^admin/', include(admin.site.urls)),
+                  url(r'^homepage/$', current_datetime, name='home'),
+                  url(r'^time/', current_datetime),
+                  url(r'^blog/category/$', view_category, name='category'),
+                  url(r'^blog/(?P<slug>[\w\-]+)/$', post_detail,name='post-detail'),
+                  url(r'^blog', posts_list, name='blog'),
+                  url(r'^index/$', index, name='index'),
+                  url(r'^search/$', search),
+                  url(r'^contact/$', contact, name='contact'),
+                  url(r'^aboutme/', about_me, name='aboutme'),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

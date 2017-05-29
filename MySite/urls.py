@@ -23,12 +23,16 @@ urlpatterns = [
                   url(r'^admin/', include(admin.site.urls)),
                   url(r'^homepage/$', current_datetime, name='home'),
                   url(r'^time/', current_datetime),
-                  url(r'^blog/category/$', view_category, name='category'),
-                  url(r'^blog/(?P<slug>[\w\-]+)/$', post_detail,name='post-detail'),
+                  url(r'^blog/category/$', category_list, name='category'),
+                  url(r'^blog/(?P<slug>[\w\-]+)/$', post_detail, name='post-detail'),
+                  url(r'^blog/(?P<slug>[\w\-]+)/comment/$', add_comment_to_post, name='add_comment_to_post'),
                   url(r'^blog', posts_list, name='blog'),
                   url(r'^index/$', index, name='index'),
                   url(r'^search/$', search),
                   url(r'^contact/$', contact, name='contact'),
                   url(r'^aboutme/', about_me, name='aboutme'),
+                  url(r'^photos/', include('photologue.urls', namespace='photologue')),
 
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

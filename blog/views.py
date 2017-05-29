@@ -1,8 +1,9 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, DetailView
+from .forms import CommentForm
 
 from blog.models import Post, Tag, Category
 from blog.forms import ContactForm
@@ -63,8 +64,7 @@ def contact(request):
             return HttpResponseRedirect('/contact/thanks/')
     else:
         form = ContactForm()
-    return render(request, 'contact_form.html', {'form':
-                                                     form})
+    return render(request, 'contact_form.html', {'form': form})
 
 
 class PostsList(ListView):
@@ -79,6 +79,25 @@ class PostsDetailView(DetailView):
     template_name = 'post_detail.html'
 
 
+class CategoryList(ListView):
+    model = Category
+    template_name = 'category.html'
+
+
 post_detail = PostsDetailView.as_view()
 posts_list = PostsList.as_view()
+category_list = CategoryList.as_view()
 
+
+def add_comment_to_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post-detail', slug=post.slug)
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment_to_post.html', {'form': form})

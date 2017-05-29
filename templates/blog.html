@@ -6,10 +6,9 @@
     <h1><a>All my life in one place:</a></h1>
 {% for post in post_list %}
     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-    <p class="category">Category:: {{ post.category}}</p>
+    <p class="category">Published:: {{ post.posted|date:"Y.m.d" }} | Comments:: {{ post.comments.count }} | Category:: {{ post.category}}</p>
     <div class="short_post">
     <p>{{ post.body| truncatewords:50 }}</p>
-    {{ post.posted|date:"Y.m.d H:i" }}
     </div>
 {% endfor %}
 

@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.db import models
 from django.urls import reverse
 
@@ -35,9 +37,10 @@ class Post(models.Model):
     slug = models.SlugField(max_length=100, unique=True, verbose_name='slug')
     body = models.TextField()
     posted = models.DateTimeField()
-    #tags=TaggableManager()
+    # tags=TaggableManager()
     tags = models.ManyToManyField(Tag, verbose_name='tags')
     category = models.ForeignKey(Category, default=1, verbose_name='categories')
+    image = models.ImageField(upload_to='images')
 
     def __str__(self):
         return self.title
@@ -45,10 +48,21 @@ class Post(models.Model):
     class Meta:
         ordering = ['posted']
 
-
-
     def get_absolute_url(self):
         return reverse('post-detail',
                        kwargs={'slug': self.slug})
 
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=True)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text

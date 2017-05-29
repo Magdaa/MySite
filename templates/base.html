@@ -9,34 +9,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>{% block title %}Magda's website{% endblock %}</title>
+    {% block style %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
-
+    {% endblock %}
 </head>
 
-<body>
-  <div class="navigation">
-      {% block sidebar %}
-      <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'category' %}">Category</a></li>
-            <li id="logo"><a href="{% url 'blog' %}">Blog</a></li>
-            <li><a href="{% url 'contact' %}">Contact Me</a></li>
-            <li>Photos</li>
-            <li><a href="{% url 'aboutme' %}">About Me</a></li>
+{% include 'snippets/navigation.html' %}
 
-      </ul>
-     {% endblock %}
-      </div>
+{% block body_main %}
+<body>
+{% block cover %}
   <div id="cover">
     <div class="cover-content">
     </div>
   </div>
+  {% endblock %}
 
-      {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
     </div>
 
   </div>
 </body>
+{% endblock %}
 </html>

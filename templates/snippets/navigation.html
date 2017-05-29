@@ -1,0 +1,13 @@
+<nav class="navigation">
+      {% block sidebar %}
+          <div class="magda">*::Magda_Antkiewicz::*</div>
+      <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'category' %}">Category</a></li>
+            <li id="logo"><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact Me</a></li>
+            <li><a href="{% url 'photologue:photo-list' %}">Photos</a></li>
+            <li><a href="{% url 'aboutme' %}">About Me</a></li>
+      </ul>
+     {% endblock %}
+</nav>

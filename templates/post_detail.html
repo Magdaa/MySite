@@ -9,7 +9,7 @@
     <p class="category"> {{ post.posted|date:"Y.m.d H:i" }} | <a href="#comment">Comments:: {{ post.comments.count }} </a>| Category:: {{post.category}}</p>
     <div class="full_post">
         <div class="photo">
-    <img class='photo_posts'src="{{ post.image.url}}" alt='img' />
+    <img class='photo_posts'src="{{ post.image.url}}" alt='post_image' />
         </div>
         <p>{{ post.body| safe }}</p>
     </div>

@@ -8,16 +8,25 @@
     {% block cover %}
   <div id="cover">
     <div class="cover-content">
+        <div id="cover-text">
       <h1>This is me...then</h1>
       <h2>Who I am and what I dream about</h2>
-      <a href="{% url 'blog' %}" class="btn">Get to know me!</a>
+        </div>
+      <a href="{% url 'blog' %}" class="btn">Get to know my story!</a>
     </div>
   </div>
 {% endblock %}
 {% block content %}
 <div class="mystory">
-    <h2>That's me. Nice quiet girl. I think that's how people who don't know me perceive me. But the truth is I'm not that kind of person.
-    I just pretend to be like this...</h2>
+    <h2>Hi, I’m Magda, and I am thrilled that you stopped by my corner of blogland.
+        My heart skips a beat for all active things, be it running, spinning and diving. But the most of all I love TRAVELLING!
+        If I can make you smile or ignite in you a spark of inspiration, then my job is done here.
+        Won’t you grab a cup of chai, a comfy blanket, and stay a while... </h2>
 </div>
-  
+<div class="polaroid">
+<img src="{{ MEDIA_URL }}media/about_me.jpg" style="width: 100%">
+<div class="container">
+    <p>That's me!</p>
+</div>
+</div>
 {% endblock %}

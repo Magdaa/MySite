@@ -31,7 +31,7 @@ ul {
 }
 
 li {
-  color: #14213D;
+  color: #000000;
   display: inline-block;
   font-family: 'Abel', sans-serif;
   font-size: 16px;
@@ -108,4 +108,7 @@ a {
     background-image:-webkit-linear-gradient(#687893,#14213D);
 }
 
-
+.polaroid{
+    position: fixed;
+    z-index: -1;
+}

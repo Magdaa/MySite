@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Abel|Amatic+SC|Raleway:100,200,300,400,500,600,700,800,900" type="text/css" rel="stylesheet">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <title>{% block title %}Magda's website{% endblock %}</title>
     {% block style %}
     {% load static %}
@@ -15,22 +15,16 @@
     {% endblock %}
 </head>
 
+
 {% include 'snippets/navigation.html' %}
+{% block cover_photo %}<div id="cover"></div>{% endblock %}
 
 {% block body_main %}
 <body>
-{% block cover %}
-  <div id="cover">
-    <div class="cover-content">
-    </div>
-  </div>
-  {% endblock %}
+
 
 {% block content %}{% endblock %}
 
-    </div>
-
-  </div>
 </body>
 {% endblock %}
 </html>

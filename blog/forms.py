@@ -12,3 +12,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('author', 'text',)
+
+Category_choice=[('travels', 'Travels'), ('fun','Fun'),('lifestyle', 'Lifestyle'), ('thoughts', 'Thoughts')]
+
+
+class CategoryForm(forms.ModelForm):
+    widget=forms.Select(choices=Category_choice)

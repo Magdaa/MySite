@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Category:{{ category.name }}{% endblock %}
+{% block content %}
+    <h1>Posts for {{ Post.category}}</h1>
+    {% for post in post_list%}
+        {% for category in category_list %}
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+    <p class="category">Published:: {{ post.posted|date:"Y.m.d" }} | Comments:: {{ post.comments.count }} | Category:: {{ post.category}}</p>
+    <div class="short_post">
+    <p>{{ post.body| truncatewords:50 }}</p>
+    </div>
+    {% endfor %}
+    {% endfor %}
+{% include 'snippets/pagination.html' %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Categories {{ category.name }}{% endblock %}
+
+{% block content %}
+
+{% for category in category_list %}
+      <h3><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></h3>
+    {% endfor %}
+
+
+{% endblock %}

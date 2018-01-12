@@ -1,69 +1,70 @@
 body {
-    background-color: white;
+    background-color: #D9FFF0;
     margin: 0;
     padding: 0;
-
+    color: #000000;
 }
 
+
 .body_detail_post {
-    background-color: rgb(253,255,237);
+    background-color: #D9FFF0;
     padding-bottom: 0.25em;
     max-width: 820px;
-    margin: auto;
+    margin: 150px auto;
     padding-left: 2em;
     padding-right: 2em;
     list-style-position: inside;
+    color: #000000;
+
 }
 
 #cover {
     height: 700px;
     position: relative;
     width: 100%;
-    background: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-8/htmlcss1-img_bicycles.jpeg") no-repeat;
+    z-index: -1;
+    display: block;
 }
 
+
 .navigation {
-    background-image: linear-gradient(to right,white, #f8ffc4);
+    background-image: linear-gradient(to right, #ede3ff, #D9FFF0);
     background-blend-mode: overlay;
-    overflow-y: auto;
+    overflow-y: visible;
+    overflow-y: visible;
     position: fixed;
     left: 0;
     top: 0;
     text-align: center;
     width: 100%;
-    z-index: 10000;
+    color: #000000;
+
 }
 
-ul {
-  padding: 0;
+ul{
+    padding: 12px;
 }
 
 li {
-  color: #14213D;
-  display: inline-block;
-  font-family: 'Abel', sans-serif;
-  font-size: 24px;
-  font-weight: 300;
-  margin: 16px 20px;
-  text-transform: uppercase;
+    display: inline-block;
+    font-family: 'Abel', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 10px 30px;
+
+
 }
 
 #logo {
-  color: #FCA311;
-  font-family: 'Amatic SC';
-  font-size: 40px;
-  padding: 0px 50px;
+    color: #000000;
+    font-family: 'Amatic SC';
+    font-size: 50px;
+    padding: 0px 0px;
     font-weight: 700;
 }
 
-.cover-content {
-  box-sizing: border-box;
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
-  top: 280px;
-  width: 70%;
-}
+
 #cover-text h1{
     color: white; text-shadow: black 0.1em 0.1em 0.2em;
     font-weight: bolder;
@@ -75,63 +76,63 @@ li {
 }
 
 h1 {
-  color: #FFF;
-  font-family: 'Amatic SC', cursive;
-  font-size: 72px;
-  line-height: 60px;
-  padding: 20px 10px;
-  text-align: center;
+    color: #000000;
+    font-family: 'Amatic SC', cursive;
+    font-size: 72px;
+    line-height: 60px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+a {
+    color: #000000;
 }
 
 h2 {
-  color: #000;
-  font-family: 'Raleway', sans-serif;
-  font-size: 28px;
-  font-weight: 500;
-  text-align: center;
+    color: #000000;
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
 }
 
 h3 {
-  color: #1c3b6e;
-  font-family: 'Abel', sans-serif;
-  font-size: 34px;
-  text-align: left;
-  text-transform: uppercase;
+    color: #000000;
+    font-family: 'Abel', sans-serif;
+    font-size: 34px;
+    text-align: left;
+    text-transform: uppercase;
     margin: 20px;
+    font-weight: bolder;
 }
 
 h4 {
-  color: #FCA311;
-  font-family: 'Abel', sans-serif;
-  font-size: 24px;
-  margin: 0px 0px 50px 0px;
+    color: #000000;
+    font-family: 'Abel', sans-serif;
+    font-size: 24px;
+    margin: 0px 0px 50px 0px;
 }
 
 p , .contact_table{
-  color: #333;
-  font-family: 'Abel', sans-serif;
-  font-size: 16px;
-  font-weight: 300;
+    color: #333;
+    font-family: 'Abel', sans-serif;
+    font-size: 22px;
+    font-weight: 300;
 }
 
-p{
-    font-size: 30px;
-}
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
-
 
 .full_post, .short_post{
-  margin: auto 20px auto 20px;
+    margin: 20px 20px 70px 20px;
     text-align: justify;
     line-height: 230%;
-
 }
 
 .category{
-    margin: 30px 20px;
-    color: #1c3b6e;
+    margin: 10px 20px 20px 20px;
+    color: #000000;
     font-weight: 600 ;
 }
 .contact_table{
@@ -142,15 +143,15 @@ a {
     margin-left:280px;
 }
 .magda{
-    color: #FCA311;
+    color: #000000;
     font-family: 'Amatic SC';
-    font-size: 60px;
-    font-weight: 500;
+    font-size: 50px;
+    font-weight: 600;
     text-align: left;
-    margin: auto 20px;
+    margin: 10px 40px;
     float: left;
-
 }
+
 
 .btn {
     background-color: #14213D;
@@ -163,7 +164,6 @@ a {
 
 .photo_posts{
     height: 100%;
-    position: relative;
     width: 100%;
     justify-content: center;
     padding-bottom: 0.25em;
@@ -196,18 +196,57 @@ a {
 
 #detail_post_title{
     margin-top: 100px;
-    color: rgb(70,121,178);
+    color: #000000;
 
 }
 
 #comment {
     margin: 20px 0px 20px 20px;
+    color: #000000;
 }
 
 .page-header{
-    color: rgb(70,121,178);
+    color: #000000;
 }
 
-.row{
-    display: block;
+
+li.dropdown {
+    display: inline-block;
+    overflow-x: visible;
+    overflow-y: visible;
 }
+
+.dropdown-content {
+    display: none;
+    overflow: visible;
+    position: absolute;
+    background-color: #ede3ff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.dropdown-content a {
+    color: #14213D;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.dropdown-content a:hover {background-color: white}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: absolute;
+    z-index: 200;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+span{
+    color:#000000;
+}
+

@@ -53,6 +53,11 @@ class Post(models.Model):
                        kwargs={'slug': self.slug})
 
 
+#class CategoryToPost(models.Model):
+ #   post = models.ForeignKey(Post)
+  #  category = models.ForeignKey(Category)
+
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments')
     author = models.CharField(max_length=200)

@@ -1,4 +1,4 @@
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import render, render_to_response, get_object_or_404, redirect
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect, HttpResponse
@@ -8,7 +8,6 @@ from .forms import CommentForm
 from blog.models import Post, Tag, Category
 from blog.forms import ContactForm
 import datetime
-import psycopg2
 
 
 def index(request):
@@ -24,12 +23,6 @@ def index(request):
 def current_datetime(request):
     now = datetime.datetime.now()
     return render(request, 'current_datetime.html', {'current_date': now})
-
-
-def view_category(request):
-    categories = Category.objects.all()
-    return render_to_response('homepage.html',
-                              {'categories': categories})
 
 
 def about_me(request):
@@ -81,12 +74,19 @@ class PostsDetailView(DetailView):
 
 class CategoryList(ListView):
     model = Category
-    template_name = 'category.html'
+    template_name = 'categories.html'
+
+
+class CategoryPosts(ListView):
+    model = PostsList
+    template_name = 'posts_from_category.html'
+    queryset = Post.objects.filter(category__name=Post.category)
 
 
 post_detail = PostsDetailView.as_view()
 posts_list = PostsList.as_view()
 category_list = CategoryList.as_view()
+post_by_category = CategoryPosts.as_view()
 
 
 def add_comment_to_post(request, slug):
@@ -101,3 +101,19 @@ def add_comment_to_post(request, slug):
     else:
         form = CommentForm()
     return render(request, 'add_comment_to_post.html', {'form': form})
+
+
+def get_post_by_category(request, name):
+    # Get specified category
+    posts = Post.objects.all().order_by('-pub_date')
+    category = Category.objects.all()
+    category_posts = []
+    for post in posts:
+        if post.category.filter(name=name):
+            category_posts.append(post)
+    # Add pagination
+    pages = Paginator(category_posts, 5)
+    # Get the category
+    category = Category.objects.filter(name=name)[0]
+    # Display all the posts
+    return render_to_response('posts_from_category.html', {'category': category})

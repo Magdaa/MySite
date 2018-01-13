@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Galeria" %}{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">{% trans "Galerie zdjęć" %}</h1>
+    <div class="container-fliud">
+    <div class="row">
+    {% if object_list %}
+        {% for gallery in object_list %}
+            <div class="col-md-4">
+                <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
+                <p class="muted"><small>{% trans "Opublikowane::" %} {{ gallery.date_added }}</small></p>
+                {% if gallery.description %}<p>{{ gallery.description|safe }}</p>{% endif %}
+                {% for photo in gallery.sample %}
+                    <a href="{{ photo.get_absolute_url }}">
+                         <img src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
+                    </a>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <div class="col-lg-12">{% trans "Brak galerii" %}.</div>
+    {% endif %}
+    </div>
+    </div>
+
+    {% include "photologue/includes/paginator.html" %}
+    
+{% endblock %}

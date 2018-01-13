@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Contact me{% endblock %}
+{% block title %}Napisz do mnie{% endblock %}
 
 {% block content %}
-    <h2>Contact me</h2>
+    <h1>Napisz do mnie</h1>
     <div class="contact_table">
        <form action="" method="post">
         <table>
@@ -11,7 +11,7 @@
         </table>
         {% csrf_token %}
            <div id="submit_button">
-        <input type="submit" class="save btn btn-default" value="Submit">
+        <input type="submit" class="save btn btn-default" value="Wyślij">
            </div>
     </form>
     </div>

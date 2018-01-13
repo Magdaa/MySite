@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Zdjęcia" %}{% endblock %}
+
+{% block content %}
+
+    <div class="row col-lg-12">
+        <h1 class="page-header">{% trans "Zdjęcia" %}</h1>
+    </div>
+
+	{% if object_list %}
+<div class="container-fluid">
+		<div class="row">
+		    {% for photo in object_list %}
+		        <a href="{{ photo.get_absolute_url }}">
+		             <img src="{{ photo.get_thumbnail_url }}" class="thumbnail" alt="{{ photo.title }}">
+		        </a>
+		    {% endfor %}
+		</div>
+	{% else %}
+		<div class="row">{% trans "Brak zdjęć" %}.</div>
+</div>
+	{% endif %}
+
+	{% include "photologue/includes/paginator.html" %}
+
+{% endblock %}

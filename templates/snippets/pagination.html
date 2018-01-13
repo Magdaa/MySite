@@ -4,13 +4,13 @@
       {% if page_obj.has_previous %}
         <li>
           <a href="?page={{ page_obj.previous_page_number }}">
-            <span>Previous</span>
+            <span>Poprzednia</span>
           </a>
         </li>
       {% else %}
         <li class="disabled">
           <a href="#">
-            <span>Previous</span>
+            <span>Poprzednia</span>
           </a>
         </li>
       {% endif %}
@@ -24,13 +24,13 @@
       {% if page_obj.has_next %}
         <li>
           <a href="?page={{ page_obj.next_page_number }}">
-            <span>Next</span>
+            <span>Następna</span>
           </a>
         </li>
       {% else %}
         <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
           <a href="#">
-            <span>Next</span>
+            <span>Następna</span>
           </a>
         </li>
       {% endif %}

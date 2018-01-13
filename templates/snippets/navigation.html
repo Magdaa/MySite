@@ -3,17 +3,17 @@
           <div class="magda"><a href="{% url 'blog' %}">*::Magda*Antkiewicz::*</a></div>
       <ul>
             <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn" data-toggle="dropdown">Category</a>
+                <a href="javascript:void(0)" class="dropbtn" data-toggle="dropdown">Kategorie</a>
                     <div class="dropdown-content">
-                        <a href="{% url 'posts_from_category' %}">Travels</a>
+                        <a href="{% url 'posts_from_category' %}">Podróże</a>
                         <a href="{% url 'posts_from_category' %}">Lifestyle</a>
-                        <a href="{% url 'posts_from_category' %}">Thoughts</a>
-                        <a href="{% url 'posts_from_category' %}">Fun</a>
+                        <a href="{% url 'posts_from_category' %}">Myśli</a>
+                        <a href="{% url 'posts_from_category' %}">Rozrywka</a>
                     </div>
             </li>
-            <li><a href="{% url 'contact' %}">Contact Me</a></li>
-            <li><a href="{% url 'photologue:gallery-list' %}">Photos</a></li>
-            <li><a href="{% url 'aboutme' %}">About Me</a></li>
+            <li><a href="{% url 'photologue:gallery-list' %}">Galeria</a></li>
+            <li><a href="{% url 'aboutme' %}">O mnie</a></li>
+            <li><a href="{% url 'contact' %}">Napisz</a></li>
             <li><div id="facebook"><a href="https://www.facebook.com/magda.antkiewicz/"><img src="{{ MEDIA_URL }}media/facebook.png" style="width: 60px"></a></div></li>
             <li><div id="instagram"><a href="https://www.instagram.com/madgaant/"><img src="{{ MEDIA_URL }}media/instagram.png" style="width: 40px"></a></div></li>
           <li><div id="pinterest"><a href="https://www.pinterest.com/madga/"><img src="{{ MEDIA_URL }}media/pinterest.png" style="width: 40px"></a></div></li>

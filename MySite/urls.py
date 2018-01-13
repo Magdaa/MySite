@@ -30,6 +30,7 @@ urlpatterns = [
                   url(r'^search/$', search),
                   url(r'^contact/$', contact, name='contact'),
                   url(r'^aboutme/', about_me, name='aboutme'),
-                  url(r'^photos/', include('photologue.urls', namespace='photologue')),
+                  #url(r'^photos/', include('photologue.urls', namespace='photologue')),
+                  url(r'photos/', include('photologue.urls', namespace="photologue"), name='gallery_list')
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

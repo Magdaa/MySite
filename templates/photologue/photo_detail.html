@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load photologue_tags i18n %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">{{ object.title }}</h1>
+    <div class="container-fluid">
+    <div class="row">
+        <p class="muted">{% trans "Opublikowane:: " %} {{ object.date_added }}</p>
+
+        <div class="col-md-8">
+		    {% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
+		    <a href="{{ object.image.url }}">
+		        <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
+		    </a>
+        </div>
+        <div class="col-md-4">
+            {% if object.public_galleries %}
+                <p>{% trans "Zdjęcie z galerii: " %}:</p>
+                <table>
+                    {% for gallery in object.public_galleries %}
+                        <tr>
+                            <td>{% previous_in_gallery object gallery %}</td>
+	                        <td class="text-center"><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></td>
+	                        <td>{% next_in_gallery object gallery %}</td>
+                        </tr>
+					{% endfor %}
+				</table>
+			{% endif %}
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

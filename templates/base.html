@@ -3,12 +3,12 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Abel|Amatic+SC|Raleway:100,200,300,400,500,600,700,800,900" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=BenchNine|Montserrat|Abel|Amatic+SC|Raleway:100,200,300,400,500,600,700,800,900" type="text/css" rel="stylesheet">
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>{% block title %}Magda's website{% endblock %}</title>
+    <title>{% block title %}MagdaA{% endblock %}</title>
     {% block style %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
@@ -17,7 +17,7 @@
 
 
 {% include 'snippets/navigation.html' %}
-{% block cover_photo %}<div id="cover"></div>{% endblock %}
+{% block cover_photo %}<div id="cover"><image src="{{ MEDIA_URL }}media/cover_photo.jpg" height="700" width="1600"></image></div>{% endblock %}
 
 {% block body_main %}
 <body>

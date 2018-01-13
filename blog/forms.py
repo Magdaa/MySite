@@ -3,9 +3,9 @@ from .models import Comment
 
 
 class ContactForm(forms.Form):
-    subject = forms.CharField(max_length=100)
-    email = forms.EmailField(required=True, label='Your e-mail address')
-    message = forms.CharField(widget=forms.Textarea)
+    subject = forms.CharField(max_length=100, label='Temat')
+    email = forms.EmailField(required=True, label='Adres e-mail')
+    message = forms.CharField(widget=forms.Textarea, label='Treść')
 
 
 class CommentForm(forms.ModelForm):

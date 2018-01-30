@@ -12,8 +12,9 @@ class AboutMePageTest(TestCase):
     def test_about_me_returns_correct_html(self):
         request = HttpRequest()
         response = about_me(request)
+        html = response.content.decode('utf8')
         self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'))
-        self.assertIn(b'<title>About me</title>', response.content)
+        self.assertIn(b'<title>O mnie</title>', response.content)
         self.assertTrue(response.content.endswith(b'</html>'))
 
 

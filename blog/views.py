@@ -114,6 +114,14 @@ def get_post_by_category(request, name):
     # Add pagination
     pages = Paginator(category_posts, 5)
     # Get the category
-    category = Category.objects.filter(name=name)[0]
+    category = Post.objects.filter(name=name)[0]
     # Display all the posts
     return render_to_response('posts_from_category.html', {'category': category})
+
+def category_list2(request,category_id):
+    posts=Post.objects.all()
+    category_id=self.request.query_params.get
+    context={'posts':posts}
+    return render(request, 'posts_from_category.html', context)
+
+

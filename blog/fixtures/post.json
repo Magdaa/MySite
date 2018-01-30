@@ -1,0 +1,11 @@
+[{"model": "blog.post",
+  "pk": 1,
+  "fields": {
+    "title": "Just test",
+    "slug": "just-test",
+    "body": "body",
+    "posted": "2018-01-14T21:55:38Z",
+    "category": 3,
+    "image": "image",
+    "tags": [3]}
+}]

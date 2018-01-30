@@ -13,7 +13,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('author', 'text',)
 
-Category_choice=[('travels', 'Travels'), ('fun','Fun'),('lifestyle', 'Lifestyle'), ('thoughts', 'Thoughts')]
+Category_choice=[('travels', 'Podróże'), ('fun','Rozrywka'),('lifestyle', 'Lifestyle'), ('thoughts', 'Myśli')]
 
 
 class CategoryForm(forms.ModelForm):

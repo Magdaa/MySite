@@ -22,7 +22,7 @@ from blog.views import *
 urlpatterns = [
                   url(r'^admin/', include(admin.site.urls)),
                   #url(r'^blog/categories/', category_list, name='categories'),
-                  url(r'^blog/categories/travels', post_by_category, name='posts_from_category'),
+                  url(r'^blog/categories/travels', get_post_by_category, name='posts_from_category'),
                   url(r'^blog/(?P<slug>[\w\-]+)/$', post_detail, name='post-detail'),
                   url(r'^blog/(?P<slug>[\w\-]+)/comment/$', add_comment_to_post, name='add_comment_to_post'),
                   url(r'^blog', posts_list, name='blog'),
@@ -30,7 +30,7 @@ urlpatterns = [
                   url(r'^search/$', search),
                   url(r'^contact/$', contact, name='contact'),
                   url(r'^aboutme/', about_me, name='aboutme'),
-                  #url(r'^photos/', include('photologue.urls', namespace='photologue')),
+                 # url(r'^photos/', include('photologue.urls', namespace='photologue')),
                   url(r'photos/', include('photologue.urls', namespace="photologue"), name='gallery_list')
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

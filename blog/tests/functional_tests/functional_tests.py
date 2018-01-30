@@ -15,7 +15,7 @@ class MainPageTest(unittest.TestCase):
         self.assertIn('Blog', self.browser.title)
         post_title = self.browser.find_element_by_tag_name('h3').text
         self.assertIn('Photos-photos', post_title)
-    #    self.fail('Finish the test!')
+    #    self.fail('Finish the tests!')
 
 
 if __name__ == '__main__':

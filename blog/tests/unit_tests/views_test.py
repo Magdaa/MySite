@@ -1,7 +1,14 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MySite.settings")
+import django
+django.setup()
+import factory
 from django.test import TestCase, RequestFactory
 
-from blog.models import Post
-from blog.views import PostsList, index,current_datetime
+from blog.models import Post, Comment
+from blog.views import PostsList, index
+from blog.forms import CommentForm
+
 
 
 
@@ -34,4 +41,25 @@ class IndexViewTestCase(TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
+
+
+class PostFactory(factory.Factory):
+    class Meta:
+        model = Post
+    slug = "test-slug"
+
+class CommentFactory(factory.Factory):
+    class Comment:
+        model = Comment
+    author = 'magda'
+
+    post = factory.SubFactory(PostFactory)
+
+class CommentViewTest(TestCase):
+    def test_valid_data(self):
+        form = CommentForm()
+        self.assertTrue(form.is_valid())
+        comment = form.save()
+        self.assertEqual(comment.author,'magda')
+
 

@@ -23,12 +23,6 @@ class BlogPageTest(TestCase):
         found = resolve('/blog/')
         self.assertEqual(found.func, posts_list)
 
-        #  def test_blog_returns_correct_html(self):
-        #  request = HttpRequest()
-        #  response = posts_list(request)
-        #  self.assertTrue(response.content.startswith(b'<!DOCTYPE html>'))
-        #  self.assertIn(b'<title>Blog</title>', response.content)
-        #  self.assertTrue(response.content.endswith(b'</html>'))
 
 
 class ContactPageTest(TestCase):

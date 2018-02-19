@@ -1,4 +1,9 @@
 import os
+import unittest
+from datetime import timezone
+from unittest import mock
+from blog import models
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MySite.settings")
 import django
 django.setup()
@@ -15,8 +20,7 @@ from blog.forms import CommentForm
 class PostsListViewTest(TestCase):
     def test_main_page(self):
         response = self.client.get('/blog')
-        self.assertEquals(response.status_code,200)
-        #self.assertTrue('posts_list' in response.context)
+        self.assertTrue('post_list' in response.context)
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -37,6 +41,18 @@ class IndexViewTest(TestCase):
         response = index(request)
         self.assertEquals(response.status_code, 200)
 
+
+class PostListIndexViewTest2(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory
+
+        @classmethod
+        def setUpClass(cls):
+            super().setUpClass()
+            cls.post = Post.objects.create()
+
+
+
 class IndexViewTestCase(TestCase):
 
     def setUp(self):
@@ -55,11 +71,23 @@ class CommentFactory(factory.Factory):
 
     post = factory.SubFactory(PostFactory)
 
-class CommentViewTest(TestCase):
-    def test_valid_data(self):
-        form = CommentForm()
-        self.assertTrue(form.is_valid())
-        comment = form.save()
-        self.assertEqual(comment.author,'magda')
 
 
+class PostByCategoryTest(unittest.TestCase):
+    def test_filter_by_category(self):
+        category = mock.Mock()
+        post = mock.Mock(spec=models.PostManager)
+        models.PostManager.filter_by_category(post,category)
+        post.filter.assert_called_with(category=category)
+
+    @mock.patch('blog.models.PostManager.filter', mock.Mock())
+    def test_filters_by_category_with_patch(self):
+        category = mock.Mock()
+        models.Post.objects.filter_by_category(category)
+        models.Post.objects.filter.assert_called_with(category=category)
+
+    @mock.patch('blog.models.PostManager.filter')
+    def test_filters_by_category_with_patch_and_filter_passed_in(self, filter_method):
+        category = mock.Mock()
+        models.Post.objects.filter_by_category(category)
+        filter_method.assert_called_with(category=category)

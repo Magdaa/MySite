@@ -104,24 +104,16 @@ def add_comment_to_post(request, slug):
 
 
 def get_post_by_category(request, name):
-    # Get specified category
     posts = Post.objects.all().order_by('-pub_date')
     category = Category.objects.all()
     category_posts = []
     for post in posts:
         if post.category.filter(name=name):
             category_posts.append(post)
-    # Add pagination
     pages = Paginator(category_posts, 5)
-    # Get the category
     category = Post.objects.filter(name=name)[0]
-    # Display all the posts
     return render_to_response('posts_from_category.html', {'category': category})
 
-def category_list2(request,category_id):
-    posts=Post.objects.all()
-    category_id=self.request.query_params.get
-    context={'posts':posts}
-    return render(request, 'posts_from_category.html', context)
+
 
 

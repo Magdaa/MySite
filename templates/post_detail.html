@@ -15,7 +15,7 @@
         <p>{{ post.body| safe }}</p>
     </div>
     <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' slug=post.slug %}">Dodaj komentarz</a>
+    <a name='button' class="btn btn-default" href="{% url 'add_comment_to_post' slug=post.slug %}">Dodaj komentarz</a>
     {% for comment in post.comments.all %}
     <div id="comment">
         <div class="date">{{ comment.created_date }}</div>

@@ -32,15 +32,20 @@ class Category(models.Model):
         return self.name
 
 
+class PostManager(models.Manager):
+    def filter_by_category(self, category):
+        self.filter(category=category)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=500)
     slug = models.SlugField(max_length=100, unique=True, verbose_name='slug')
     body = models.TextField()
     posted = models.DateTimeField()
-    # tags=TaggableManager()
     tags = models.ManyToManyField(Tag, verbose_name='tags')
     category = models.ForeignKey(Category, default=1, verbose_name='categories')
     image = models.ImageField(upload_to='images')
+    objects = PostManager()
 
     def __str__(self):
         return self.title
@@ -51,11 +56,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('post-detail',
                        kwargs={'slug': self.slug})
-
-
-#class CategoryToPost(models.Model):
- #   post = models.ForeignKey(Post)
-  #  category = models.ForeignKey(Category)
 
 
 class Comment(models.Model):
@@ -70,4 +70,7 @@ class Comment(models.Model):
         self.save()
 
     def __str__(self):
-        return self.text
+        return 'Comment by {} on {}'.format(self.author, self.post)
+
+    class Meta:
+        ordering = ('created_date',)

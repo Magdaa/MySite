@@ -1,5 +1,6 @@
 from datetime import timezone
 from unittest import TestCase, mock
+import pytest
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MySite.settings")
 
@@ -11,10 +12,16 @@ import factory
 
 
 
+
 class PostModelTest(TestCase):
     def test_string_representation(self):
         post = Post(title='Fake title')
         self.assertEqual(str(post), post.title)
+    def test_absolute_url(self):
+        post = Post(slug='test-slug')
+        returned_slug = post.get_absolute_url()
+        self.assertEquals(returned_slug,'/blog/test-slug/')
+
 
 
 

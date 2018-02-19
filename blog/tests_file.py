@@ -42,13 +42,11 @@ class AdminTest(LiveServerTestCase):
         self.client.login(username='testuser', password='Testing123')
         response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
-        # self.assertTrue(('Log out').encode('utf-8') in response.content)
 
     def test_logout(self):
         self.client.login(username='testuser', password='Testing123')
         response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
-        # self.assertTrue(('Log out').encode('utf-8') in response.content)
         self.client.logout()
         response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
@@ -67,6 +65,6 @@ class AdminTest(LiveServerTestCase):
         response = self.client.post('/admin/blog/post/add/', data=data, auth=('testuser', "Testing123"),
                                     content_type='text/html', follow=True, secure='false')
         self.assertEquals(response.status_code, 200)
-        # self.assertTrue(('added successfully').encode('utf-8') in response.content)
+        response2=self.client.get('/blog')
+        self.assertIn('My first post', response2.content.decode())
         all_posts = Post.objects.all()
-        # self.assertEquals(len(all_posts), 1)
